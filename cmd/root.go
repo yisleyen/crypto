@@ -21,8 +21,8 @@ var rootCmd = &cobra.Command{
 	*Doviz.com'da bir sorun olması durumunda, bu servis hizmet veremez.'
 	
 	Örnek Kullanım:
-	.crypto get bitcoin  => Bitcoin  [2022-06-15 22:16:26] : $21.670,45
-	.crypto get ethereum => Ethereum [2022-06-15 22:16:26] : $1.173,37
+	.crypto get bitcoin  => Bitcoin: 20841,65$ (366018,0 TRY)
+	.crypto get ethereum => Ethereum: 1102,48$ (19345,0 TRY)
 	`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
