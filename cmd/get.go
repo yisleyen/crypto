@@ -7,6 +7,7 @@ package cmd
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/spf13/cobra"
 	"github.com/yisleyen/crypto/parser"
@@ -37,9 +38,12 @@ var getCmd = &cobra.Command{
 
 		cryptocurrency = strings.Title(strings.ToLower(cryptocurrency))
 
-		cryptocurrencys := parser.ParseWebPage(cryptocurrency)
+		cryptocurrencyinfos := parser.ParseWebPage(cryptocurrency)
 
-		fmt.Printf("%s: %s$ (%s TRY)", cryptocurrency, cryptocurrencys["dollar"], cryptocurrencys["try"])
+		fmt.Println()
+		fmt.Printf("%s: %s$ (%s TRY)\n", cryptocurrency, cryptocurrencyinfos["dollar"], cryptocurrencyinfos["try"])
+		fmt.Printf("%s: %s\n", "Değişim", cryptocurrencyinfos["dailyChange"])
+		fmt.Printf("%s: %s", "Tarih", time.Now().Format("2006-01-02 15:04:05"))
 		fmt.Println()
 	},
 }

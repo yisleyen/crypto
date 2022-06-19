@@ -14,6 +14,7 @@ func ParseWebPage(cryptocurrency string) map[string]string {
 
 	parseElementDollar := ".text-white[data-socket-key='" + strings.ToLower(cryptocurrency) + "']"
 	parseElementTry := ".flex .justify-between .mr-16"
+	parseElementDailyChange := ".font-semibold div[data-socket-key='" + strings.ToLower(cryptocurrency) + "']"
 
 	url := "https://www.doviz.com/kripto-paralar/" + strings.ToLower(cryptocurrency)
 
@@ -40,6 +41,9 @@ func ParseWebPage(cryptocurrency string) map[string]string {
 	dollarValue := doc.Find(parseElementDollar).Text()
 	dollarValue = strings.Replace(dollarValue, ".", "", 1)
 	cryptocurrencys["dollar"] = strings.Replace(dollarValue, "$", "", 1)
+
+	dailyChange := doc.Find(parseElementDailyChange).Text()
+	cryptocurrencys["dailyChange"] = strings.Replace(dailyChange, ",", ".", 1)
 
 	data := doc.Find(parseElementTry)
 	data.Each(func(i int, s *goquery.Selection) {
